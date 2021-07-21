@@ -23,6 +23,14 @@ module PeoplesoftVoucher
       end
     end
 
+    def mark_files_as_error
+      alma_sftp.start do |sftp|
+        sftp_locations.each do |location|
+          sftp.rename(location, "#{location}.error")
+        end
+      end
+    end
+
     def status_report(cvs_invoices: invoices)
       return "" if invoices.empty?
       CSV.generate do |csv|

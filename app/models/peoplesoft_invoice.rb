@@ -1,0 +1,2 @@
+class PeoplesoftInvoice < ApplicationRecord
+end
